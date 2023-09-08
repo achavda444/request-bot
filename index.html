@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP Info Redirect</title>
+    <style>
+        /* Loading animation styles */
+        #loader {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loader">Loading...</div>
+
+    <script>
+        // Fetch IP information from the API
+        fetch('https://ipinfo.io/?token=2ee47bfabb71a1')
+            .then(response => response.json())
+            .then(data => {
+                const country = data.country;
+
+                // Redirect users based on country
+                switch (country) {
+                    case 'IN':
+                        // Redirect to India-specific page
+                        window.location.href = 'https://instagram.com';
+                        break;
+                    case 'US':
+                        // Redirect to United States-specific page
+                        window.location.href = 'https://facebook.com';
+                        break;
+                    default:
+                        window.location.href = 'https://linkedin.com';
+
+                }
+
+            })
+
+    </script>
